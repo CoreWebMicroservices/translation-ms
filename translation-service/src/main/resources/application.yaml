@@ -1,5 +1,7 @@
 server:
   port: ${TRANSLATION-SERVICE-PORT:3003}
+  servlet:
+    context-path: /${SERVICE_PREFIX:}
 
 spring:
   application:
@@ -8,5 +10,8 @@ spring:
     banner-mode: off
   jackson:
     default-property-inclusion: non_null
+  threads:
+    virtual:
+      enabled: ${VIRTUAL_THREADS_ENABLED:true}
   config:
     import: classpath:db-config.yaml, security-config.yaml
